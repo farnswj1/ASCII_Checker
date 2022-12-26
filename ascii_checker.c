@@ -10,7 +10,9 @@ static PyObject* is_ascii(PyObject* self, PyObject* args) {
         return NULL;
     }
 
-    for (int i = 0; string[i] != '\0'; i++) {
+    int string_length = strlen(string);
+
+    for (int i = 0; i < string_length; i++) {
         if (!isascii(string[i])) {
             return Py_False;
         }
@@ -32,7 +34,7 @@ static PyMethodDef methods[] = {
 };
 
 // Module definition
-static struct PyModuleDef asciiChecker = {
+static struct PyModuleDef ascii_checker = {
     PyModuleDef_HEAD_INIT,
     "ASCII Checker",
     "This module checks if a string contains only ASCII values.",
@@ -41,6 +43,6 @@ static struct PyModuleDef asciiChecker = {
 };
 
 // Initializes the module
-PyMODINIT_FUNC PyInit_asciiChecker(void) {
-    return PyModule_Create(&asciiChecker);
+PyMODINIT_FUNC PyInit_ascii_checker(void) {
+    return PyModule_Create(&ascii_checker);
 }
