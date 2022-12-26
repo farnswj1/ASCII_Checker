@@ -10,9 +10,7 @@ static PyObject* is_ascii(PyObject* self, PyObject* args) {
         return NULL;
     }
 
-    int string_length = strlen(string);
-
-    for (int i = 0; i < string_length; i++) {
+    for (int i = 0, length = strlen(string); i < length; i++) {
         if (!isascii(string[i])) {
             return Py_False;
         }
